@@ -1,1 +1,114 @@
 /* pages/ssfy/ssfy.wxss */
+.more{
+
+  display: block;
+  font-size: 13px;
+  color: green;
+  text-decoration: underline;
+  text-align: right;
+  height: 20px;
+}
+
+.head{
+  margin: 0px;
+}
+
+.separate{
+  color: gray;
+  height: 25px;
+  text-align: center;
+  /* background-color: yellowgreen; */
+  line-height: 25px;
+  font-size: 15px;
+}
+
+.comments{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 30rpx;
+  border-bottom: 1px solid #e8e8e8;
+  justify-content: center;
+}
+
+.comments image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin: 20rpx;
+}
+
+.commentcon{
+  display: flex;
+  flex-direction: column;
+  width: 76%;
+  padding-left: 20rpx;
+}
+.commenttop, .commentbottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+/*日期*/
+.datetime {
+  padding: 10rpx;
+  font-size: 26rpx;
+  color: #b2b2b2;
+}
+
+/*话语*/
+.sentence {
+    color: black;
+    font-size: 28rpx;
+    margin-top: 6rpx;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+
+
+/*昵称*/
+.nickname {
+    color: #4d4d4d;
+    font-size: 30rpx;
+}
+
+.addmorecomment{
+  text-align: center;
+  color: blue;
+  font-size: 15px;
+  text-decoration: underline;
+}
+
+.bottombtn{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: gainsboro;
+  align-items: center;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 99;
+}
+
+.inputto{
+  margin-left: 10px;
+  padding-left: 10px;
+  color: rebeccapurple;
+  background-color: white;
+  border-radius: 5px;
+  height: 37px;
+
+}
+
+.saybtn{
+  height: 40px;
+  line-height: 40px;
+  width: 90px;
+}

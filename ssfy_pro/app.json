@@ -1,11 +1,15 @@
 {
   "pages":[
-    "pages/ssfy/ssfy"
+    "pages/home/home",
+    "pages/ssfy/ssfy",
+    "pages/fylist/fylist",
+    "pages/fylist/fydetail/fydetail"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "说说方言",
     "navigationBarTextStyle":"black"
   }
 }

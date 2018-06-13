@@ -1,0 +1,14 @@
+<!--pages/home/home.wxml-->
+<!-- 启动页，待定 -->
+<!-- <view class='container'> -->
+
+    <image src='../../images/home/ssfy.jpg' mode='widthFill' style='width:{{vwidth}}px' class='welcomeImg'></image>
+    <button 
+      wx:if="{{canIUse}}"
+      class='goStart' 
+      open-type='getUserInfo'
+      lang="zh_CN" 
+      bindgetuserinfo="onGotUserInfo">进入挑战</button>
+    <view wx:else>请升级微信版本</view>
+
+<!-- </view> -->

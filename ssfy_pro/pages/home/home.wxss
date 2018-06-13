@@ -1,0 +1,22 @@
+/* pages/home/home.wxss */
+
+.container{
+  text-align: center;
+  margin: 0px;
+}
+
+.welcomeImg{
+  margin-left: 1px;
+}
+
+/* 设置按钮的属性 */
+.goStart{
+
+  margin-top: 50px;
+  margin-left: 40px;
+  margin-right: 40px;
+  /* width: 200px; */
+  border-radius: 12px;
+  background-color: green;
+  color: white;
+}
