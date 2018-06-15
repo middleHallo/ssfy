@@ -109,12 +109,6 @@ Page({
    */
   onShow: function () {
     this.initImageAndTextWidth()
-
-    wx.login({
-      success:function(res){
-        console.log(res)
-      }
-    })
   },
 
   /**

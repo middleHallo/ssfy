@@ -1,1 +1,73 @@
 /* pages/fylist/fylist.wxss */
+/* pages/ssfy/ssfy.wxss */
+
+
+.comments{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0rpx;
+  /*border-bottom: 1px solid #e8e8e8;*/
+  border-top: 1rpx solid #e8e8e8;
+  justify-content: center;
+  height: 80px;
+}
+
+ /* .comments image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin: 20rpx;
+}  */
+
+.commentcon{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  padding-left: 10rpx;
+}
+.commenttop, .commentbottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+/*日期*/
+.datetime {
+  padding: 10rpx;
+  font-size: 26rpx;
+  color: #b2b2b2;
+}
+
+/*话语*/
+.sentence {
+    color: black;
+    font-size: 28rpx;
+    margin-top: 6rpx;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: normal;
+}
+
+
+/*昵称*/
+.nickname {
+    color: #4d4d4d;
+    font-size: 30rpx;
+}
+
+.addmorecomment{
+  text-align: center;
+  color: blue;
+  font-size: 15px;
+  text-decoration: underline;
+  margin-top: 20px;
+}
+
+.hadloadall{
+  text-align: center;
+  color: gray;
+  font-size: 15px;
+  margin-top: 20px;
+}

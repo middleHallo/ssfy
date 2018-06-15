@@ -71,6 +71,18 @@ function post(posturl,params,dosomething){
   })
 }
 
+// 加载提示
+function setloading(){
+  wx.showLoading({
+    title: '玩命加载中...',
+  })
+}
+
+// 隐藏加载提示
+function hidemyloading() {
+  wx.hideLoading()
+}
+
 // 提示框
 function myshowmodel(title, content) {
   wx.showModal({
@@ -100,5 +112,7 @@ module.exports = {
   myshowmodel: myshowmodel,
   myshowErrorToast:myshowErrorToast,
   isempty: isempty,
-  post: post
+  post: post,
+  setloading: setloading,
+  hidemyloading: hidemyloading
 }
