@@ -40,7 +40,7 @@ Page({
    */
   initdata:function(){
     var _this = this
-    var url = config.service.requesturl + "index/gethotlist"
+    var url = config.service.requesturl + "index/gethotlist?page=1"
     var parmas = []
     utils.setloading()
     utils.getData(url,parmas,function(res){
@@ -59,6 +59,13 @@ Page({
         totalpage: res.data.totalpage
       })
     })
+  },
+
+  /**
+   * 加载更多
+   */
+  addmore:function(){
+
   },
   /**
    * 生命周期函数--监听页面隐藏

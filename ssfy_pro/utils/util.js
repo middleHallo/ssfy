@@ -29,7 +29,7 @@ function convertToStarsArray(stars) {
 
 // 判断字符串是否为空，用于在POST请求前对输入框输入的内容就行检查
 function isempty(str){
-  var newstr = str.replace(/(^\s*)|(\s*$)/g, "")
+  var newstr = str.replace("/(^\s*)|(\s*$)/g", "")
 
   return newstr.length
 }

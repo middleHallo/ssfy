@@ -3,12 +3,9 @@
 <!-- <view class='container'> -->
 
     <image src='../../images/home/ssfy.jpg' mode='widthFill' style='width:{{vwidth}}px' class='welcomeImg'></image>
-    <button 
-      wx:if="{{canIUse}}"
-      class='goStart' 
-      open-type='getUserInfo'
-      lang="zh_CN" 
-      bindgetuserinfo="onGotUserInfo">进入挑战</button>
-    <view wx:else>请升级微信版本</view>
+    
+   <!-- <button class='goStart' bindtap='login'>进入挑战</button> --> 
+    <button class='goStart' open-type="getUserInfo" bindgetuserinfo="backuserinfo">进入挑战</button>
+    
 
 <!-- </view> -->

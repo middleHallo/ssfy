@@ -63,10 +63,16 @@
     color: black;
     font-size: 28rpx;
     margin-top: 6rpx;
-    overflow: hidden; 
+    margin-bottom: 6rpx;
+    /* overflow: hidden; 
     text-overflow: ellipsis; 
-    white-space: nowrap;
+    white-space: nowrap; */
 }
+
+.sentence text{
+  word-wrap: break-word;
+  width: 200px;
+} 
 
 
 /*昵称*/
@@ -78,6 +84,13 @@
 .addmorecomment{
   text-align: center;
   color: blue;
+  font-size: 15px;
+  text-decoration: underline;
+}
+/* 已无更多数据的时候调用 */
+.addmorecomment2{
+  text-align: center;
+  color: gray;
   font-size: 15px;
   text-decoration: underline;
 }

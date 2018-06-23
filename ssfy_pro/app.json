@@ -1,15 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/home/home",
     "pages/ssfy/ssfy",
     "pages/fylist/fylist",
     "pages/fylist/fydetail/fydetail"
-    
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "说说方言",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

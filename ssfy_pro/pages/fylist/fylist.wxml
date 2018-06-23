@@ -26,5 +26,5 @@
     </view>
   </block>
   <view wx:if="{{totalpage>currentpage}}" class='addmorecomment' bindtap='addmore'>加载更多...</view>
-  <view wx:else="{{totalpage>currentpage}}" class='hadloadall' bindtap='addmore'>-------------  已无更多数据!  -------------</view>
+  <view wx:else="{{totalpage>currentpage}}" class='hadloadall'>-------------  已无更多数据!  -------------</view>
 </view>

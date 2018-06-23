@@ -1,5 +1,6 @@
 // pages/ssfy/ssfy.js
 const utils = require("../../utils/util.js")
+var config = require("../../config.js")
 Page({
 
   /**
@@ -12,82 +13,13 @@ Page({
     inputw:320,
     scrollH:100,
     comments:[],
-    word:"'吃鸡'",
-    mycomment:'',
-    comments:[
-      {
-        nickname:"后米米米米",
-        gender:1,
-        language:"zh_CN",
-        city:"成都",
-        province:"四川",
-            avatarUrl:"https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment: "湖南话 期鸡"
-      },
-      {
-        nickname: "后米米米米",
-        gender: 1,
-        language: "zh_CN",
-        city: "成都",
-        province: "四川",
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment:"湖南话 期鸡"
-      },
-      {
-        nickname: "后米米米米",
-        gender: 1,
-        language: "zh_CN",
-        city: "成都",
-        province: "四川",
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment: "湖南话 期鸡"
-      },
-      {
-        nickname: "后米米米米",
-        gender: 1,
-        language: "zh_CN",
-        city: "成都",
-        province: "四川",
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment: "湖南话 期鸡"
-      },
-      {
-        nickname: "后米米米米",
-        gender: 1,
-        language: "zh_CN",
-        city: "成都",
-        province: "四川",
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment: "湖南话 期鸡"
-      },
-      {
-        nickname: "后米米米米",
-        gender: 1,
-        language: "zh_CN",
-        city: "成都",
-        province: "四川",
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment: "湖南话 期鸡"
-      },
-      {
-        nickname: "后米米米米",
-        gender: 1,
-        language: "zh_CN",
-        city: "成都",
-        province: "四川",
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment: "湖南话 期鸡"
-      },
-      {
-        nickname: "后米米米米",
-        gender: 1,
-        language: "zh_CN",
-        city: "成都",
-        province: "四川",
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/tWs2GslLYqfak7x0AWVrhOicoJrngKjR7G7pmRCDuE63zjRNibDptIWyLJnlPYiaMicVONEKFx0wPZFbdcSuP1evkQ/132",
-        comment: "湖南话 期鸡"
-      }
-    ]
+    htcontent:[],
+    moreword:"加载更多...",
+    moreclass:"addmorecomment",
+    currentpage:1,
+    totalpage:1,
+    htid:"",
+    mycomment:""
   },
 
   /**
@@ -108,22 +40,96 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.initImageAndTextWidth()
+
+    this.initConfig()
+    this.getHotHtAndComments()
+    this.coveruserinfo()
   },
 
   /**
    * 初始化text和图片大小
    */
-  initImageAndTextWidth:function(){
+  initConfig:function(){
     var vw = wx.getSystemInfoSync().windowWidth
     var sH = wx.getSystemInfoSync().windowHeight
-    wx.getSystemInfoSync().screenHeight
+
     this.setData({
       vw: vw,
       textw:vw-10,
       inputw: vw - 130,
-      scrollH: sH - 320
+      scrollH: sH - 60
     })
+  },
+
+  /**
+   * 获取最热话题及评论
+   */
+  getHotHtAndComments:function(){
+    var that = this
+    var url = config.service.requesturl + "index/gethot"
+    utils.getData(url,[],function(res){
+      console.log(res)
+      var data = res.data
+      if (data.totalpage <= data.currentpage){
+        that.setData({
+          moreword: "已无更多数据!",
+          moreclass: "addmorecomment2"
+        })
+      }
+      that.setData({
+          htcontent: res.data.content,
+          comments: res.data.comments,
+          totalpage:res.data.totalpage,
+          htid:res.data.content.htid
+      })
+    })
+  },
+  /**
+   * 覆盖本地数据
+   */
+  coveruserinfo:function(){
+
+    wx.getSetting({
+      success: function (res) {
+        // 覆盖当前userinfo的缓存
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: res => {
+              wx.setStorageSync('userinfo', res.userInfo)
+            }
+          })
+        }
+      },
+      fail: function (res) {
+
+      }
+    })
+    
+  },
+
+  /**
+   * 根据htid来获取更多评论
+   */
+  getMoreComments:function(htid,page){
+
+    var totalpage = this.data.totalpage
+    var htlength = utils.isempty(htid)
+    if ((htlength <= 0) || (totalpage<=page)){
+
+      utils.myshowmodel('请求失败','已无更多数据!')
+
+      return 0
+    }
+
+    var url = config.service.requesturl + "index/getmorecomments";
+    var parmas = {
+      htid: htid,
+      page:page
+    }
+    utils.getData(url,parmas,function(res){
+      console.log(res)
+    })
+
   },
 
   /**
@@ -138,26 +144,34 @@ Page({
    * 提交评论
    */
   say:function(){
+
+    // 先判断是否存在fyuid
+    var fyuid = wx.getStorageSync('fyuid')
+    if(!fyuid){
+      utils.myshowmodel('出错了','没授权登录!')
+    }
+
     // 先判断mycomment是否为空,若为空则跳出当前方法
     var mycomment = this.data.mycomment
     var strlen = utils.isempty(mycomment)
 
     if (strlen == 0){
-      utils.showmymodel('评论失败','评论内容不能为空！')
-      return
+      utils.myshowmodel('评论失败','评论内容不能为空！')
+      return 0
     }
 
     // 评论内容不为空时执行以下代码
-    var useri = wx.getStorageSync('userInfo')
-    var params = []
-
-    params['avatarurl'] = useri.avatarUrl
-    params['nickname'] = useri.nickName
-    params['comment'] = mycomment
-
+    var htid = this.data.htid
+    
+    var params = {
+      comment: mycomment,
+      fyuid: fyuid,
+      htid: htid
+    }
+    var url = config.service.requesturl + "index/addcomment"
     // 其次带上当前user信息进行POST请求
-    utils.post('http://localhost/ssfy/z',params,function(res){
-      console.log('hhh')
+    utils.post(url, params,function(res){
+      console.log(res)
     })
   },
 
@@ -174,7 +188,9 @@ Page({
    * 点击加载更多评论内容
    */
   addmore:function(){
-
+    var page = this.data.currentpage + 1
+    var htid = this.data.htid
+    this.getMoreComments(htid,page)
   },
 
   /**
