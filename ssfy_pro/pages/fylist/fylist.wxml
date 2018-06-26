@@ -1,14 +1,11 @@
 <!--pages/fylist/fylist.wxml-->
-
-
 <view>
-
   <block wx:for="{{fylist}}" wx:key="*this" wx:for-index="idx">
     <!-- 每一行 -->
     <view  class='comments' style='background-color:{{idx==0?red:green}}'>
       <!-- 头像 -->
       <!-- 有头像时需要改commentcon的width为76%，以及放开头像的注释 -->
-      <!-- <image src='{{item.avatarUrl}}'></image> -->
+      <image src='http://192.168.1.110/{{item.htimgurl}}'></image>
       <!-- 昵称与评论 -->
       <view class='commentcon'>
         <!-- 昵称与date -->
@@ -22,9 +19,8 @@
           <view class='sentence'>{{item.htdesc}}</view>
         </view>
       </view>
-
     </view>
   </block>
   <view wx:if="{{totalpage>currentpage}}" class='addmorecomment' bindtap='addmore'>加载更多...</view>
-  <view wx:else="{{totalpage>currentpage}}" class='hadloadall'>-------------  已无更多数据!  -------------</view>
+  <view wx:else class='hadloadall'>-------------  已无更多数据!  -------------</view>
 </view>

@@ -65,27 +65,22 @@ Page({
    * 获取最热话题及评论
    */
   getHotHtAndComments:function(){
-    var that = this
+    let that = this
     var url = config.service.requesturl + "index/gethot"
     utils.getData(url,[],function(res){
-      console.log(res)
       var data = res.data
-      if (data.totalpage <= data.currentpage){
-        that.setData({
-          moreword: "已无更多数据!",
-          moreclass: "addmorecomment2"
-        })
-      }
+      console.log(data)
       that.setData({
           htcontent: res.data.content,
           comments: res.data.comments,
           totalpage:res.data.totalpage,
           htid:res.data.content.htid
       })
+      
     })
   },
   /**
-   * 覆盖本地数据
+   * 覆盖本地用户信息缓存数据
    */
   coveruserinfo:function(){
 
@@ -101,10 +96,9 @@ Page({
         }
       },
       fail: function (res) {
-
+        console.log(res)
       }
     })
-    
   },
 
   /**
@@ -114,7 +108,9 @@ Page({
 
     var totalpage = this.data.totalpage
     var htlength = utils.isempty(htid)
-    if ((htlength <= 0) || (totalpage<=page)){
+    var that = this
+    var hadcomments = this.data.comments
+    if ((htlength <= 0) || (totalpage<page)){
 
       utils.myshowmodel('请求失败','已无更多数据!')
 
@@ -127,7 +123,12 @@ Page({
       page:page
     }
     utils.getData(url,parmas,function(res){
-      console.log(res)
+      var newdata = hadcomments.concat(res.data.contents)
+      that.setData({
+        comments: newdata,
+        currentpage:res.data.currentpage,
+        totalpage:res.data.totalpage
+      })
     })
 
   },
@@ -170,9 +171,18 @@ Page({
     }
     var url = config.service.requesturl + "index/addcomment"
     // 其次带上当前user信息进行POST请求
+    var that = this
     utils.post(url, params,function(res){
-      console.log(res)
+      
+      that.setData({
+        totalpage:res.data.totalpage,
+        mycomment:""
+      })
+
+      that.getHotHtAndComments()
     })
+    
+
   },
 
   /**

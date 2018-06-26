@@ -92,7 +92,7 @@
   text-align: center;
   color: gray;
   font-size: 15px;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .bottombtn{

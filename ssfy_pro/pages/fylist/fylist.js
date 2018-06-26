@@ -9,7 +9,8 @@ Page({
   data: {
     fylist:[],
     currentpage:1,
-    totalpage:1
+    totalpage:1,
+    avatarurl:''
   },
 
   /**
@@ -30,7 +31,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var url = wx.getStorageSync('userinfo').avatarUrl
     
+    this.setData({
+      avatarurl:url
+    })
     // 初始化页面
     this.initdata()
   },
@@ -46,12 +51,10 @@ Page({
     utils.getData(url,parmas,function(res){
       utils.hidemyloading()
       if(res.data.code != 200){
-        utils.showmymodal('哦哦，出错了！','请重试或者联系我们！')
+        utils.showmymodal('哦哦，出错了！','请重试！')
         return 0
       }
-
       console.log(res)
-
       // 赋值操作
       _this.setData({
         fylist:res.data.content,

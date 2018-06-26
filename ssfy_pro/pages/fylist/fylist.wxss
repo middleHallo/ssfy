@@ -13,17 +13,18 @@
   height: 80px;
 }
 
- /* .comments image{
+.comments image{
   width: 100rpx;
   height: 100rpx;
-  border-radius: 50rpx;
+  /* border-radius: 50rpx; */
+  border-radius: 4px;
   margin: 20rpx;
-}  */
+}
 
 .commentcon{
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 76%;
   padding-left: 10rpx;
 }
 .commenttop, .commentbottom{
@@ -55,6 +56,7 @@
 .nickname {
     color: #4d4d4d;
     font-size: 30rpx;
+    width: 70%;
 }
 
 .addmorecomment{

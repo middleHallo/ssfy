@@ -6,7 +6,7 @@
 // var host = 'https://xcxa.guokehuyu.com';
 
 // 开发环境用本地接口地址
-var host = 'http://localhost'
+var host = 'http://192.168.1.110'
 
 var config = {
 
