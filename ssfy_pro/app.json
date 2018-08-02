@@ -3,10 +3,11 @@
     "pages/home/home",
     "pages/ssfy/ssfy",
     "pages/fylist/fylist",
-    "pages/fylist/fydetail/fydetail"
+    "pages/fylist/fydetail/fydetail",
+    "pages/fytips/fytips"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "说说方言",
     "navigationBarTextStyle": "black"

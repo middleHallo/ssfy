@@ -2,10 +2,16 @@
 <!-- 启动页，待定 -->
 <!-- <view class='container'> -->
 
-    <image src='../../images/home/ssfy.jpg' mode='widthFill' style='width:{{vwidth}}px' class='welcomeImg'></image>
+  <view style='width:100%;height:{{imgheight}}px;'>
+    <image src='../../images/home/qdy.jpg' mode='scaleToFill' class='backgroundimg' style='height:{{imgheight}}px;'></image>
+    <image src='../../images/home/qdy_ann.png' class='action_btn' z-index="99"  open-type="getUserInfo" bindgetuserinfo="backuserinfo"></image>
+    <button class='goStart' open-type="getUserInfo" bindgetuserinfo="backuserinfo">进入挑战</button>
+  </view>
+  <view class='mengban' hidden='{{mengbanhidden}}'></view>
+ 
     
    <!-- <button class='goStart' bindtap='login'>进入挑战</button> --> 
-    <button class='goStart' open-type="getUserInfo" bindgetuserinfo="backuserinfo">进入挑战</button>
+    <!-- <button class='goStart' open-type="getUserInfo" bindgetuserinfo="backuserinfo">进入挑战</button> -->
     
 
 <!-- </view> -->

@@ -1,0 +1,6 @@
+<!--pages/fytips/fytips.wxml-->
+<!-- 若用户之前选择了拒绝授权并且想要进行点赞和评论等内容，则跳转当前页面进行授权 -->
+
+<view>
+  <button open-type='getUserInfo' class='weui-btn' type='primary' bindgetuserinfo='getData'>授权登录</button>
+</view>

@@ -1,2 +1,54 @@
 <!--pages/fylist/fydetail/fydetail.wxml-->
-<text>pages/fylist/fydetail/fydetail.wxml</text>
+<!-- 页面整体的view -->
+<view class='pagebody'>
+  <!-- 内容部分 -->
+  <scroll-view style='height:{{scrollHeight}}px' scroll-y bindscrolltolower='tolowser' lower-threshold='-50'>
+    <!-- 头部的图片及title -->
+    <view class='htcontent'>
+      <image src='{{detail.htimgurl}}' class='htimg' mode='widthFill'></image>
+      <text class='httitle'>{{detail.htcontent}}</text>
+    </view>
+    <!-- '最热评论'及'火热'的图标 -->
+    
+    <view class='hotnavi'>
+      <image src='/images/ssfy/hot.png'></image>
+      <text>最新评论</text>
+    </view>
+    <!-- 评论内容 -->
+    <block wx:for="{{comments}}" wx:key="*this">
+       <view class='comment'>
+          <!-- 装头像的view -->
+          <view class='icon'>
+            <image src="{{item.avatarurl}}"></image>
+          </view>
+          <!-- 装右侧评论的view -->
+          <view class='userinfo'>
+            <!-- 昵称 -->
+            <view class='nickname'>{{item.nickname}}</view>
+            <!-- 评论内容 -->
+            <view class='commetn_content'>{{item.content}}</view>
+            <!-- 其他信息 -->
+            <view class='other'>
+              <!-- 时间 -->
+              <view class='time'>{{item.commenttime}}</view>
+              <!-- 点赞-->
+              <view class='setgood'>
+                <button class='setgood_btn' catchtap='goodcomment' data-commentid='{{item.commentid}}' data-idx='{{index}}'>点</button>
+                <image class='good_selected' src="{{item.fyuid==null?'/images/ssfy/goods.png':'/images/ssfy/goods_selected.jpg'}}"></image>
+                <text>{{item.goods}}</text>
+                
+              </view>
+            </view>
+          </view>
+       </view>
+       <!-- 分割线 -->
+       <view class='separater'></view>
+    </block>
+   
+  </scroll-view>
+  <!-- 评论框 -->
+  <view class='bottom_action'>
+    <input bindinput='inputcomment' value='{{mycomment}}'></input>
+    <button  bindtap='say'>发布</button>
+  </view>
+</view>

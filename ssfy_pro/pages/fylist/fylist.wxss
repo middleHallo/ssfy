@@ -1,75 +1,217 @@
 /* pages/fylist/fylist.wxss */
-/* pages/ssfy/ssfy.wxss */
 
 
-.comments{
+.top_hot_htimg{
+  width: 100vw;
+}
+/* 整体详情 */
+.middle_hot_content{
+ margin-top: 20rpx;
+ margin-left: 20rpx;
+ margin-right: 20rpx;
+ height: 320rpx;
+}
+
+/* 描述整体 */
+.middle_hot_desc{
+  height: 220rpx;
+}
+
+/* 热门 图标处理 */
+.middle_hot_desc image{
+  width: 35rpx;
+  height: 30rpx;
+} 
+
+/* 热门 2个字处理 */
+.middle_hot_text{
+  
+  color:  #FB6614;
+  font-weight: bold;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* 描述内容 */
+.middle_hot_htdesc{
+
+  margin-top: 10rpx;
+  color: #666666;
+  width: 710rpx; 
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+}
+
+/* 浏览量 */
+.middle_scan{
+  color: #A2A2A2;
+  margin-top: 50rpx;
+  font-size: 14px;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  margin: 0rpx;
-  /*border-bottom: 1px solid #e8e8e8;*/
-  border-top: 1rpx solid #e8e8e8;
-  justify-content: center;
-  height: 80px;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.comments image{
-  width: 100rpx;
-  height: 100rpx;
-  /* border-radius: 50rpx; */
-  border-radius: 4px;
-  margin: 20rpx;
+.middle_hothtgoods{
+  width: 40%;
 }
 
-.commentcon{
-  display: flex;
-  flex-direction: column;
-  width: 76%;
-  padding-left: 10rpx;
-}
-.commenttop, .commentbottom{
+.middle_hothtaction{
+  width: 60%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+}
+.middle_hothtaction image{
+  width: 30rpx;
+  height: 30rpx;
+  
+}
+
+.hothtgoods{
+  margin-right: 20rpx;
+}
+
+.hothtshare{
+  margin-right: 40rpx;
+}
+
+.middle_hothtaction text{
+  position: relative;
+  bottom: -2px;
+  right: 0rpx;
+}
+
+.middle_hothtaction button{
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 20rpx;
+  opacity: 0;
+  background-color: royalblue;
+  z-index: 99;
+}
+.hothtsetgoods{
+  width: 50rpx;
+  position: absolute;
+  bottom: -4rpx;
+  right: 20rpx;
+}
+.hothtsetshare{
+  position: absolute;
+  width: 40rpx;
+  bottom: -4rpx;
+  right: 90rpx;
+}
+
+
+/* 分隔线 */
+.middle_separate{
+  height: 20rpx;
+  background-color: #EBEBEB;
+}
+
+/* 每一个话题 */
+.bottom_htdiv{
+  display: flex;
+  flex: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+/* 每一个话题里的内容 */
+.bottom_htimg{
+  width: 200rpx;
+  padding: 20rpx;
+}
+.bottom_htimg image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.bottom_htcontent{
+  margin-top: 20rpx;
+  color: #282828;
+  font-size: 16px;
+  width: 550rpx;
+}
+
+.bottom_htdesc{
+  font-size: 14px;
+  margin-right: 20rpx;
+}
+
+.bottom_htcontent text{
+  margin-top: 10rpx;
+  margin-right: 10rpx;
+  color: #666666;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+}
+
+.bottom_other{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-right: 20rpx;
   width: 100%;
 }
-/*日期*/
-.datetime {
-  padding: 10rpx;
-  font-size: 26rpx;
-  color: #b2b2b2;
+
+.goods{
+ position: relative;
+ top: 2px;
+}
+.bottom_action{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
 }
 
-/*话语*/
-.sentence {
-    color: black;
-    font-size: 28rpx;
-    margin-top: 6rpx;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    white-space: normal;
+.comment{
+  margin-right: 40rpx;
+}
+
+.goodsbtn{
+  height: 20px;
+  font-size: 13px;
+  position: absolute;
+  right: 0px;
+  bottom: -2px;
+  z-index: 99;
+  opacity: 0;
+}
+
+.bottom_httitle text{
+  color: #282828;
+}
+
+.bottom_htdesc text{
+  color: #808080;
 }
 
 
-/*昵称*/
-.nickname {
-    color: #4d4d4d;
-    font-size: 30rpx;
-    width: 70%;
+.bottom_ht_separate{
+  margin-top: 10rpx;
+  margin-left: 3%;
+  background-color: #EBEBEB;
+  height: 1px; 
+  width: 94%;
 }
 
-.addmorecomment{
-  text-align: center;
-  color: blue;
-  font-size: 15px;
-  text-decoration: underline;
-  margin-top: 20px;
-}
 
-.hadloadall{
-  text-align: center;
-  color: gray;
-  font-size: 15px;
-  margin-top: 20px;
-}
+
+
+

@@ -33,6 +33,12 @@ function isempty(str){
 
   return newstr.length
 }
+function showsuccess(str){
+  wx.showToast({
+    title: str,
+    icon:'success'
+  })
+}
 
 // 请求数据,需传入完整的url
 function getData(url, params, dosomething) {
@@ -114,5 +120,6 @@ module.exports = {
   isempty: isempty,
   post: post,
   setloading: setloading,
-  hidemyloading: hidemyloading
+  hidemyloading: hidemyloading,
+  showsuccess: showsuccess
 }

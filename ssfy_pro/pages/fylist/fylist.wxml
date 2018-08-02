@@ -1,26 +1,71 @@
 <!--pages/fylist/fylist.wxml-->
-<view>
-  <block wx:for="{{fylist}}" wx:key="*this" wx:for-index="idx">
-    <!-- 每一行 -->
-    <view  class='comments' style='background-color:{{idx==0?red:green}}'>
-      <!-- 头像 -->
-      <!-- 有头像时需要改commentcon的width为76%，以及放开头像的注释 -->
-      <image src='http://192.168.1.110/{{item.htimgurl}}'></image>
-      <!-- 昵称与评论 -->
-      <view class='commentcon'>
-        <!-- 昵称与date -->
-        <view class='commenttop'>
-          <view class="nickname">{{item.htcontent}}</view>
-          <view class="datetime">2018-06-12</view>
+<!-- 整体页面 -->
+<view class='top_all'>
+    <!-- 内容页 -->
+        <!-- 轮播图 -->
+        <swiper indicator-dots="true" autoplay="true" bindchange="changehotlist">
+            <!-- 循环 -->
+            <block wx:for="{{hothtlist}}" wx:key="*this">
+              <swiper-item>
+                 <image class="top_hot_htimg" src='{{item.htimgurl}}' mode='widthFill'></image> 
+              </swiper-item>
+            </block>
+        </swiper>
+        <!-- 热门话题的详细说明 --> 
+        <view class='middle_hot_content' catchtap='taphotlist'>
+          <view class='middle_hot_desc'>
+            <image src='../../images/ssfy/pic1.png'></image>
+            <text class='middle_hot_text'> {{currentdata.htcontent}} </text>
+            <text class='middle_hot_htdesc'>{{currentdata.htdesc}}</text>
+          </view>
+          <view class='middle_scan'>
+            <view class='middle_hothtgoods'>
+              <text>2123 次浏览</text>
+            </view>
+            <view class='middle_hothtaction'>
+              <button class='hothtsetshare' catchtap='hothtsetshare'  open-type="share" data-idx='{{index}}' data-htid='{{currentdata.htid}}'>分享</button>
+              <button class='hothtsetgoods' catchtap='hothtsetgoods' data-idx='{{index}}'  data-htid='{{currentdata.htid}}'>点赞</button>
+              <image class='hothtshare' src='/images/ssfy/share.jpg'></image>
+              <image class='hothtgoods' src="{{currentdata.goodsid==null?'/images/ssfy/goods.png':'/images/ssfy/goods_selected.jpg'}}"></image>
+              <text>{{currentdata.likenum}}</text>
+            </view>
+            <!-- 分享图片  -->
+            <!-- <image src=''></image> -->
+          </view>
         </view>
-
-        <!-- 评论 -->
-        <view class='commentbottom'>
-          <view class='sentence'>{{item.htdesc}}</view>
-        </view>
-      </view>
-    </view>
-  </block>
-  <view wx:if="{{totalpage>currentpage}}" class='addmorecomment' bindtap='addmore'>加载更多...</view>
-  <view wx:else class='hadloadall'>-------------  已无更多数据!  -------------</view>
+        <view class='middle_separate'></view>
+        <!-- 列表页 -->
+        <block wx:for="{{htlist}}" wx:key="*this">
+        <!-- 每一个话题框 -->
+          <view class='bottom_htdiv' catchtap='taplist' data-htid='{{item.htid}}'>
+            <!-- 话题缩略图  -->
+            <view class='bottom_htimg'>
+              <image src='{{item.htimgthur}}'></image>
+            </view>
+            <!-- 话题详情view  -->
+            <view class='bottom_htcontent'>
+              <!-- 标题  -->
+              <view class='bottom_httitle'>
+                <text>{{item.htcontent}}</text>
+              </view>
+              <!-- 详细介绍  -->
+              <view class='bottom_htdesc'>
+                <text>{{item.htdesc}}</text>
+              </view>
+              <!-- 其他栏（发表时间、评论数、点赞、点赞数）  -->
+              <view class='bottom_other'>
+                <!-- 右侧评论和点赞数 -->
+                <button class='goodsbtn' catchtap='setgoods' data-idx='{{index}}' data-htid='{{item.htid}}'>点赞</button>
+                <image class='bottom_action comment' src='/images/ssfy/comment.jpg'></image>
+                <image class='bottom_action' src="{{item.goodsid==null?'/images/ssfy/goods.png':'/images/ssfy/goods_selected.jpg'}}"></image>
+                <text class='goods'>{{item.likenum}}</text>
+                
+              </view>
+            </view>
+          </view>
+          <view class='bottom_ht_separate_view'>
+            <view class='bottom_ht_separate'></view>
+          </view>
+        </block>
 </view>
+
